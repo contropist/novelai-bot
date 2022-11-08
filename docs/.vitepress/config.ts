@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from '@koishijs/vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -13,6 +13,12 @@ export default defineConfig({
         { text: '介绍', link: '/' },
         { text: '用法', link: '/usage' },
         { text: '配置项', link: '/config' },
+        { text: '更多资源', link: '/more' },
+      ],
+    }, {
+      text: '部署',
+      items: [
+        { text: '部署 NAIFU', link: '/deploy/naifu' },
       ],
     }, {
       text: '进阶',
@@ -35,6 +41,7 @@ export default defineConfig({
         { text: 'Koishi', link: 'https://koishi.chat' },
         { text: 'Koishi Play', link: 'https://play.koishi.chat' },
         { text: 'NovelAI.dev', link: 'https://novelai.dev' },
+        { text: '支持作者', link: 'https://afdian.net/a/shigma' },
       ],
     }],
 
@@ -42,7 +49,7 @@ export default defineConfig({
       { icon: 'discord', link: 'https://discord.com/invite/xfxYwmd284' },
       { icon: 'github', link: 'https://github.com/koishijs/novelai-bot' }
     ],
-  
+
     footer: {
       message: `Released under the MIT License.`,
       copyright: 'Copyright © 2022-present Shigma & Ninzore',
@@ -54,6 +61,12 @@ export default defineConfig({
   },
 
   vite: {
+    server: {
+      fs: {
+        strict: false,
+      },
+    },
+
     resolve: {
       dedupe: ['vue'],
     },

@@ -9,10 +9,8 @@ commands:
     options:
       enhance: Image Enhance Mode
       model: Set Model for Generation
-      orient: Set Image Orientation
+      resolution: Set Image Resolution
       sampler: Set Sampler
-      anatomy.true: Filter Anatomically Incorrect Images
-      anatomy.false: Allow Anatomically Incorrect Images
       seed: Set Random Seed
       steps: Set Iteration Steps
       scale: Set CFG Scale
@@ -22,7 +20,7 @@ commands:
     messages:
       expect-prompt: Expect a prompt.
       expect-image: Expect an image.
-      invalid-input: Invalid prompt, only English words can be used.
+      latin-only: Invalid prompt, only English words can be used.
       forbidden-word: Forbidden words in prompt.
       concurrent-jobs@random:
         - Too busy to handle your request...
@@ -36,6 +34,7 @@ commands:
         - Sure, but please wait for me to complete this one before.
         - Bruh, there are {0} jobs pending!
       invalid-size: The Enhance mode can only be used for images generated. Use /novelai without enhance option if you are using normal img2img.
+      invalid-resolution: Invalid resolution for image generation. The width and height of image should be multiple of 64.
       file-too-large: File is too large.
       unsupported-file-type: Unsupported file type.
       download-error: Parsing image failed.

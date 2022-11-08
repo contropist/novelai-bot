@@ -55,7 +55,7 @@ API 服务器地址。如果你搭建了私服，可以将此项设置为你的�
 
 要附加的额外请求头。如果你的 `endpoint` 是第三方服务器，你可能需要设置正确的请求头，否则请求可能会被拒绝。
 
-## 功能设置
+## 参数设置
 
 ### model
 
@@ -78,12 +78,47 @@ API 服务器地址。如果你搭建了私服，可以将此项设置为你的�
 
 默认的采样器。
 
-### anatomy
+### maxSteps
 
-- 类型：`boolean`
-- 默认值：`true`
+- 类型：`number`
 
-默认情况下是否过滤不良构图。
+选项 `--steps` 的最大值。
+
+### maxResolution
+
+- 类型：`number`
+
+选项 `--resolution` 中边长的最大值。
+
+## 输入设置
+
+### basePrompt
+
+- 类型: `string`
+- 默认值: `'masterpiece, best quality'`
+
+所有请求的附加标签。默认值相当于网页版的「Add Quality Tags」功能。
+
+### negativePrompt
+
+- 类型: `string`
+- 默认值: 
+  ```text
+  nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers,
+  extra digit, fewer digits, cropped, worst quality, low quality,
+  normal quality, jpeg artifacts, signature, watermark, username, blurry
+  ```
+
+所有请求附加的负面标签。默认值相当于网页版的「Low Quality + Bad Anatomy」排除。
+
+### forbidden
+
+- 类型：`string`
+- 默认值：`''`
+
+违禁词列表。含有违禁词的请求将被拒绝。
+
+## 高级设置
 
 ### output
 
@@ -99,22 +134,6 @@ API 服务器地址。如果你搭建了私服，可以将此项设置为你的�
 
 是否允许使用点数。禁用后部分功能 (如图片增强和步数设置) 将无法使用。
 
-### basePrompt
-
-- 类型: `string`
-- 默认值: `'masterpiece, best quality'`
-
-所有请求的附加标签。默认值相当于开启网页版的「Add Quality Tags」功能。
-
-## 高级设置
-
-### forbidden
-
-- 类型：`string`
-- 默认值：`''`
-
-违禁词列表。含有违禁词的请求将被拒绝。
-
 ### requestTimeout
 
 - 类型：`number`
@@ -122,9 +141,16 @@ API 服务器地址。如果你搭建了私服，可以将此项设置为你的�
 
 当请求超过这个时间时会中止并提示超时。
 
-### recallTimeout
+<!-- ### recallTimeout
 
 - 类型：`number`
 - 默认值：`0`
 
-图片发送后自动撤回的时间 (设置为 `0` 禁用此功能)。
+图片发送后自动撤回的时间 (设置为 `0` 禁用此功能)。 -->
+
+### maxConcurrency
+
+- 类型：`number`
+- 默认值：`0`
+
+单个频道下的最大并发数量 (设置为 `0` 以禁用此功能)。
